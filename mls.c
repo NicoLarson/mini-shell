@@ -1,19 +1,17 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <dirent.h>
+#include <string.h>
+#include <errno.h>
 
 int mls(char *directory)
 {
-    // char *my_parameter = NULL;
-    printf("Directory: %s", directory);
-    if (strcmp(directory, "mls") == 10)
-    {
-        directory = "./";
-    }
-    remove_command_from_input(directory, "mls");
     DIR *d;
     struct dirent *rp;
     /* Nom répertoire */
-    char *nom_rep = directory;
+    char *directory_name = directory;
     /* Ouverture du flux */
-    d = opendir(nom_rep);
+    d = opendir(directory_name);
     /* Test de bonne ouverture */
     if (d == NULL)
     {
@@ -21,7 +19,7 @@ int mls(char *directory)
         return EXIT_FAILURE;
     }
     /* Lecture du contenu et affichage du nom de chaque fichier rencontré */
-    fprintf(stdout, "Contenu du répertoire %s\n", nom_rep);
+    fprintf(stdout, "\nContenu du répertoire %s\n", directory_name);
     rp = readdir(d);
     while (rp != NULL)
     {

@@ -42,20 +42,24 @@ char my_commands[] = {"mls", "mpwd", "mcd", "mfind", "mcat", "mgrep", "mhist"};
 
 ### Les fonctions
 
-#### COMMANDE PARAMÈTRE
+#### COMMANDE / PARAMÈTRE
 
 ```c
-command_detector()
 parameter_detector()
 space_remover()
 is_command_exist()
 is_parameter_exist()
 ```
 
+##### command_detector() 
 Faire une fonction qui récupère l'entrée de l'utilisateur et trouve la commande.
 Une commande commencera toujours au début.
 Supprimer les espaces du début et prendre les premiers caractères jusqu’au prochain espace.
+```c
+command_detector()
+```
 
+#### parameter_detector() 
 Faire une fonction qui récupère l'entrée de l'utilisateur et trouve le parametre de la commande.
 Un paramètre sera toujours après une commande.
 

@@ -3,19 +3,19 @@
 #include <dirent.h>
 #include <string.h>
 #include <errno.h>
-
+#include "mls.c"
 #define NUM_OF_COMMAND 7
+
 char *my_commands[NUM_OF_COMMAND] = {"mls", "mpwd", "mcd", "mfind", "mcat", "mgrep", "mhist"};
 
-char *command_detector(char *input_command)
+char *command_detector(char *first_word)
 {
-    char *first_word = strtok(input_command, " ");
     char *command_detected;
     for (int i = 0; i < NUM_OF_COMMAND; i++)
     {
         if ((strstr(first_word, my_commands[i])) == NULL)
         {
-            command_detected = "Commande introuvable\n";
+            command_detected = 0;
         }
         else
         {
@@ -27,19 +27,46 @@ char *command_detector(char *input_command)
     return command_detected;
 }
 
+void parameter_detector(char *parameter)
+{
+}
+
 int mini_shell(void)
 {
-
     int exit = 0;
     while (exit == 0)
     {
         size_t n = 0;
-        char *my_command = NULL;
+        char *input_string = NULL;
         ssize_t nread;
-        /* Message */
+
+        /* Prompteur */
         printf("$: ");
+
         /* Lecture */
-        nread = getline(&my_command, &n, stdin);
+        nread = getline(&input_string, &n, stdin);
+        // Returns first token
+        char *first_word = strtok(input_string, " ");
+        char *second_word = strtok(NULL, " ");
+
+        char *command_detected = command_detector(first_word);
+        if (command_detected != 0)
+        {
+            if (strcmp(command_detected, "mls") == 0)
+            {
+                printf("second_word: %s", second_word);
+                if (second_word == NULL)
+                {
+                    second_word = "./";
+                }
+                mls(second_word);
+            }
+        }
+        else
+        {
+            printf("Commande inconnue \n");
+        }
+
         /* Verification */
         if (nread == -1)
         {
@@ -47,14 +74,12 @@ int mini_shell(void)
             return EXIT_FAILURE;
         }
 
-        
-        printf("command_detector: %s \n", command_detector(my_command));
-        if (strcmp(my_command, "exit") == 10)
+        if (strcmp(input_string, "exit") == 10)
         {
             exit = 1;
         }
         /* Libérer la mémoire */
-        free(my_command);
+        free(input_string);
     }
     return EXIT_SUCCESS;
 }
