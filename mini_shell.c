@@ -3,7 +3,10 @@
 #include <dirent.h>
 #include <string.h>
 #include <errno.h>
+
 #include "mls.c"
+#include "mpwd.c"
+
 #define NUM_OF_COMMAND 7
 
 char *my_commands[NUM_OF_COMMAND] = {"mls", "mpwd", "mcd", "mfind", "mcat", "mgrep", "mhist"};
@@ -54,12 +57,19 @@ int mini_shell(void)
         {
             if (strcmp(command_detected, "mls") == 0)
             {
-                printf("second_word: %s", second_word);
                 if (second_word == NULL)
                 {
                     second_word = "./";
                 }
                 mls(second_word);
+            }
+            else if (strcmp(command_detected, "mpwd") == 0)
+            {
+                if (second_word != NULL)
+                {
+                    printf("\nArgument inutile\n");
+                }
+                mpwd();
             }
         }
         else
