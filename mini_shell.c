@@ -67,7 +67,7 @@ int mini_shell(void)
             {
                 if (second_word != NULL)
                 {
-                    printf("\nArgument inutile\n");
+                    printf("Argument inutile\n");
                 }
                 mpwd();
             }

@@ -2,7 +2,15 @@
 
 ## Introduction
 
-Ce programme est un mini-shell où il sera possible d'utiliser les commandes suivante: mls, mpwd, mcd, mfind, mcat, mgrep, mhist.
+Ce programme est un mini-shell où il sera possible d'utiliser les commandes suivante:
+
+- [ ] mls
+- [x] mpwd
+- [ ] mcd
+- [ ] mfind
+- [ ] mcat
+- [ ] mgrep
+- [ ] mhist
 
 ```
                            ┌───────────┐
@@ -51,15 +59,18 @@ is_command_exist()
 is_parameter_exist()
 ```
 
-##### command_detector() 
+##### command_detector()
+
 Faire une fonction qui récupère l'entrée de l'utilisateur et trouve la commande.
 Une commande commencera toujours au début.
 Supprimer les espaces du début et prendre les premiers caractères jusqu’au prochain espace.
+
 ```c
 command_detector()
 ```
 
-#### parameter_detector() 
+#### parameter_detector()
+
 Faire une fonction qui récupère l'entrée de l'utilisateur et trouve le parametre de la commande.
 Un paramètre sera toujours après une commande.
 
@@ -71,8 +82,7 @@ Un paramètre sera toujours après une commande.
 ## mpwd
 
 Affichage du répertoire courant.
-getcwd(2)
-readdir(3)
+Utilisation de la fonction `getcwd(2)`.
 
 ## mcd
 
