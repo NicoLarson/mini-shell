@@ -41,6 +41,11 @@ Lorsque l'utilisateur entrera une commande, le programme devra detecter le type 
 Si la commande est `exit`, le programme s'arrête.
 Si la commande est inconnue, le message `commande inconnue` s'affiche et retour au prompteur.
 Si la commande contient un paramètre, une fonction devra detecter la commande puis le parametre. Et ainsi traiter la commande.
+## Etapes
+
+1. Créations des fichiers
+2. Codage des fonctions
+3. Test
 
 ### Les variables
 
@@ -90,7 +95,11 @@ Fonctions opendir(3), readdir(3), closedir(3)
 
 ## mfind
 
+Fonction pour trouver un fichier ou dossier.
+
 ## mcat
+
+Affiche le contenu d'un fichier.
 
 ## mgrep
 

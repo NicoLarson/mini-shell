@@ -4,8 +4,9 @@
 #include <string.h>
 #include <errno.h>
 
-#include "mls.c"
-#include "mpwd.c"
+#include "commands/mls.c"
+#include "commands/mpwd.c"
+#include "commands/mcat.c"
 
 #define NUM_OF_COMMAND 7
 
@@ -36,6 +37,7 @@ void parameter_detector(char *parameter)
 
 int mini_shell(void)
 {
+	mcat();
     int exit = 0;
     while (exit == 0)
     {
