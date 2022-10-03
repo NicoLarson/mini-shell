@@ -40,8 +40,9 @@ Le mini-shell devra indiquer a l'utilisateur qu'il peut entrer une commande via 
 Lorsque l'utilisateur entrera une commande, le programme devra detecter le type de commande.
 Si la commande est `exit`, le programme s'arrête.
 Si la commande est inconnue, le message `commande inconnue` s'affiche et retour au prompteur.
-Si la commande contient un paramètre, une fonction devra detecter la commande puis le parametre. Et ainsi traiter la commande.
-## Etapes
+Si la commande contient un paramètre, une fonction devra detecter la commande puis le paramètre. Et ainsi traiter la commande.
+
+## Étapes
 
 1. Créations des fichiers
 2. Codage des fonctions
@@ -53,61 +54,42 @@ Si la commande contient un paramètre, une fonction devra detecter la commande p
 char my_commands[] = {"mls", "mpwd", "mcd", "mfind", "mcat", "mgrep", "mhist"};
 ```
 
-### Les fonctions
+### COMMANDES et PARAMÈTRES
 
-#### COMMANDE / PARAMÈTRE
+Il faut tout d'abord savoir si une commende entré est:
 
-```c
-parameter_detector()
-space_remover()
-is_command_exist()
-is_parameter_exist()
-```
+- connue: Si une commande est dans la liste `my_commands`, elle est connue.
+- avec ou sans variable
 
-##### command_detector()
-
-Faire une fonction qui récupère l'entrée de l'utilisateur et trouve la commande.
+Faire une fonction `command_detector()` qui récupère l'entrée de l'utilisateur et trouve la commande.
 Une commande commencera toujours au début.
 Supprimer les espaces du début et prendre les premiers caractères jusqu’au prochain espace.
 
-```c
-command_detector()
-```
-
-#### parameter_detector()
-
-Faire une fonction qui récupère l'entrée de l'utilisateur et trouve le parametre de la commande.
+Faire une fonction `parameter_detector()` qui récupère l'entrée de l'utilisateur et trouve le paramètre de la commande.
 Un paramètre sera toujours après une commande.
 
-## mls
-
-- [x] Afficher le contenu du répertoire courant
-- [ ] Afficher répertoire donné en argument.
-
-## mpwd
-
-Affichage du répertoire courant.
-Utilisation de la fonction `getcwd(2)`.
-
-## mcd
-
-Fonctions opendir(3), readdir(3), closedir(3)
-
-## mfind
-
-Fonction pour trouver un fichier ou dossier.
-
-## mcat
+#### mcat
 
 Affiche le contenu d'un fichier.
 
-## mgrep
+#### mcd
 
-## mhist
+Fonctions opendir(3), readdir(3), closedir(3)
+
+#### mfind
+
+Fonction pour trouver un fichier ou dossier.
+
+#### mgrep
+
+#### mhist
+
+Ajouter un tableau malloc pour insérer chaque commandes entré par l'utilisateur.
+Ou créer un fichier contenant tous les historiques de commandes.
 
 Affichage de l'historique des commandes exécutées avec une option pour la supprimer.
 
-### Fonctions
+#### Fonctions
 
 - Enregistrer les commandes
 - Afficher les commandes
@@ -115,3 +97,13 @@ Affichage de l'historique des commandes exécutées avec une option pour la supp
 chdir(2)
 getcwd(2)
 localtime(3)
+
+#### mls
+
+- [x] Afficher le contenu du répertoire courant
+- [ ] Afficher répertoire donné en argument.
+
+#### mpwd
+
+Affichage du répertoire courant.
+Utilisation de la fonction `getcwd(2)`.
