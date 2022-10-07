@@ -2,6 +2,7 @@ EXEC = mini_shell
 CFLAGS = -Wall -Werror -std=c18 -pedantic -D_XOPEN_SOURCE=700
 
 all: $(EXEC)
+	@$(MAKE) -C src/mcat
 
 $(EXEC): $(EXEC).o main.o
 	gcc -o $(EXEC) $(EXEC).o main.o
@@ -16,4 +17,4 @@ clean :
 	rm -fr *.o
 	
 run :
-	./$(EXEC)
+	$(EXEC)

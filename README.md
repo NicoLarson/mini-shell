@@ -1,5 +1,11 @@
 # Mini-shell
 
+## TODO
+
+- [ ] faire un make file qui compil les fichiers
+- [ ] chaque commande a un fichier main
+- [ ] chaque commande va être utiliser avec l'executable
+- [ ]
 ## Introduction
 
 Ce programme est un mini-shell où il sera possible d'utiliser les commandes suivante:

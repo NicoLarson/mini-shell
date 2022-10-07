@@ -4,7 +4,7 @@
 #include <string.h>
 #include <errno.h>
 
-int mls(char *directory)
+int main()
 {
     DIR *d;
     struct dirent *rp;

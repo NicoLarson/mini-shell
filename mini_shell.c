@@ -4,13 +4,13 @@
 #include <string.h>
 #include <errno.h>
 
-#include "commands/mcat.c"
-#include "commands/mcd.c"
-#include "commands/mfind.c"
-#include "commands/mgrep.c"
-#include "commands/mhist.c"
-#include "commands/mls.c"
-#include "commands/mpwd.c"
+// #include "commands/mcat.c"
+// #include "commands/mcd.c"
+// #include "commands/mfind.c"
+// #include "commands/mgrep.c"
+// #include "commands/mhist.c"
+// #include "commands/mls.c"
+// #include "commands/mpwd.c"
 
 #define NUM_OF_COMMAND 7
 
@@ -51,64 +51,66 @@ int mini_shell(void)
 		printf("[mini-shell]-$: ");
 		/* Lecture */
 		nread = getline(&input_string, &n, stdin);
+		// add_to_history_file(input_string);
 		char *first_word = strtok(input_string, " ");
 		printf("first_word: %s \n", first_word);
 
 		char *second_word = strtok(NULL, " ");
+
 		printf("second_word2: %s \n", second_word);
 
 		char *command_detected = command_detector(first_word);
 		if (command_detected != 0)
 		{
-			// mcat
-			if (strcmp(command_detected, "mcat") == 0)
-			{
-				if (second_word != NULL)
-				{
-					printf("Veillez indiquer un fichier. \n");
-				}
+		// 	// mcat
+		// 	if (strcmp(command_detected, "mcat") == 0)
+		// 	{
+		// 		if (second_word != NULL)
+		// 		{
+		// 			printf("Veillez indiquer un fichier. \n");
+		// 		}
 
-				mcat(second_word);
-			}
-			// mcd
-			else if (strcmp(command_detected, "mcd") == 0)
-			{
-				mcd();
-			}
-			// mfind
-			else if (strcmp(command_detected, "mfind") == 0)
-			{
-				mfind();
-			}
-			// mgrep
-			else if (strcmp(command_detected, "mgrep") == 0)
-			{
-				mgrep();
-			}
-			// mhist
-			else if (strcmp(command_detected, "mhist") == 0)
-			{
-				mhist();
-			}
-			// mls
-			else if (strcmp(command_detected, "mls") == 0)
-			{
-				if (second_word == NULL)
-				{
-					second_word = "./";
-				}
-				mls(second_word);
-			}
-			// mpwd
+		// 		mcat(main.c);
+		// 	}
+		// 	// mcd
+		// 	else if (strcmp(command_detected, "mcd") == 0)
+		// 	{
+		// 		mcd();
+		// 	}
+		// 	// mfind
+		// 	else if (strcmp(command_detected, "mfind") == 0)
+		// 	{
+		// 		mfind();
+		// 	}
+		// 	// mgrep
+		// 	else if (strcmp(command_detected, "mgrep") == 0)
+		// 	{
+		// 		mgrep();
+		// 	}
+		// 	// mhist
+		// 	else if (strcmp(command_detected, "mhist") == 0)
+		// 	{
+		// 		mhist();
+		// 	}
+		// 	// mls
+		// 	else if (strcmp(command_detected, "mls") == 0)
+		// 	{
+		// 		if (second_word == NULL)
+		// 		{
+		// 			second_word = "./";
+		// 		}
+		// 		mls(second_word);
+		// 	}
+		// 	// mpwd
 
-			else if (strcmp(command_detected, "mpwd") == 0)
-			{
-				if (second_word != NULL)
-				{
-					printf("Argument inutile\n");
-				}
-				mpwd();
-			}
+		// 	else if (strcmp(command_detected, "mpwd") == 0)
+		// 	{
+		// 		if (second_word != NULL)
+		// 		{
+		// 			printf("Argument inutile\n");
+		// 		}
+		// 		mpwd();
+		// 	}
 		}
 		else
 		{
