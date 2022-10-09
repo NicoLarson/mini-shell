@@ -41,6 +41,7 @@ void parameter_detector(char *parameter)
 
 int mini_shell(void)
 {
+	system("./build/mpwd");
 	int exit = 0;
 	while (exit == 0)
 	{
@@ -62,55 +63,54 @@ int mini_shell(void)
 		char *command_detected = command_detector(first_word);
 		if (command_detected != 0)
 		{
-		// 	// mcat
-		// 	if (strcmp(command_detected, "mcat") == 0)
-		// 	{
-		// 		if (second_word != NULL)
-		// 		{
-		// 			printf("Veillez indiquer un fichier. \n");
-		// 		}
+			// mcat
+			if (strcmp(command_detected, "mcat") == 0)
+			{
+				if (second_word != NULL)
+				{
+					printf("Veillez indiquer un fichier. \n");
+				}
+				system("./build/mcat");
+			}
+			// mcd
+			else if (strcmp(command_detected, "mcd") == 0)
+			{
+				system("./build/mcd");
+			}
+			// mfind
+			else if (strcmp(command_detected, "mfind") == 0)
+			{
+				system("./build/mfind");
+			}
+			// mgrep
+			else if (strcmp(command_detected, "mgrep") == 0)
+			{
+				system("./build/mgrep");
+			}
+			// mhist
+			else if (strcmp(command_detected, "mhist") == 0)
+			{
+				system("./build/mhist");
+			}
+			// mls
+			else if (strcmp(command_detected, "mls") == 0)
+			{
+				if (second_word == NULL)
+				{
+					second_word = "./";
+				}
+				system("./build/mls");
+			}
+			// mpwd
 
-		// 		mcat(main.c);
-		// 	}
-		// 	// mcd
-		// 	else if (strcmp(command_detected, "mcd") == 0)
-		// 	{
-		// 		mcd();
-		// 	}
-		// 	// mfind
-		// 	else if (strcmp(command_detected, "mfind") == 0)
-		// 	{
-		// 		mfind();
-		// 	}
-		// 	// mgrep
-		// 	else if (strcmp(command_detected, "mgrep") == 0)
-		// 	{
-		// 		mgrep();
-		// 	}
-		// 	// mhist
-		// 	else if (strcmp(command_detected, "mhist") == 0)
-		// 	{
-		// 		mhist();
-		// 	}
-		// 	// mls
-		// 	else if (strcmp(command_detected, "mls") == 0)
-		// 	{
-		// 		if (second_word == NULL)
-		// 		{
-		// 			second_word = "./";
-		// 		}
-		// 		mls(second_word);
-		// 	}
-		// 	// mpwd
-
-		// 	else if (strcmp(command_detected, "mpwd") == 0)
-		// 	{
-		// 		if (second_word != NULL)
-		// 		{
-		// 			printf("Argument inutile\n");
-		// 		}
-		// 		mpwd();
-		// 	}
+			else if (strcmp(command_detected, "mpwd") == 0)
+			{
+				if (second_word != NULL)
+				{
+					printf("Argument inutile\n");
+				}
+				system("./build/mpwd");
+			}
 		}
 		else
 		{

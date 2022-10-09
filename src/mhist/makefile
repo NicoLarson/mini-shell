@@ -1,5 +1,5 @@
 CC = gcc
-EXEC = mcat
+EXEC = mhist
 CFLAGS = -Wall -Werror -std=c18 -pedantic -D_XOPEN_SOURCE=700
 BUILD_PATH=../../build/$(EXEC)
 

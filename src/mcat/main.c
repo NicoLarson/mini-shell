@@ -1,6 +1,9 @@
-#include "mcat.c"
+#include <stdio.h>
+#include <stdlib.h>
+#include "mcat.h"
 
-int main()
+int main(int argc, char **argv)
 {
-    mcat("/etc/passwd");
+    mcat(argv[1]);
+    return 0;
 }

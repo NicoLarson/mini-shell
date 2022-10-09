@@ -9,7 +9,7 @@ int main()
     DIR *d;
     struct dirent *rp;
     /* Nom répertoire */
-    char *directory_name = directory;
+    char *directory_name = "./";
     /* Ouverture du flux */
     d = opendir(directory_name);
     /* Test de bonne ouverture */
