@@ -47,7 +47,21 @@ void add_to_history_file(char *to_add)
 	}
 	fclose(history_file);
 }
-
+void remove_char(char str[], char t)
+{
+	int i, j;
+	i = 0;
+	while (i < strlen(str))
+	{
+		if (str[i] == t)
+		{
+			for (j = i; j < strlen(str); j++)
+				str[j] = str[j + 1];
+		}
+		else
+			i++;
+	}
+}
 int mini_shell(void)
 {
 	int exit = 0;
@@ -62,8 +76,7 @@ int mini_shell(void)
 		nread = getline(&input_string, &n, stdin);
 		add_to_history_file(input_string);
 		char *first_word = strtok(input_string, " ");
-		char *second_word = strtok(NULL, " ");
-
+		char *second_word = strtok(NULL, "\n");
 		char *command_detected = command_detector(first_word);
 		if (command_detected != 0)
 		{

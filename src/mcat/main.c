@@ -4,6 +4,9 @@
 
 int main(int argc, char **argv)
 {
-    mcat(argv[1]);
+    for (int i = 1; i < argc; i++)
+    {
+        mcat(argv[i]);
+    }
     return 0;
 }

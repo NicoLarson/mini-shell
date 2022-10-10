@@ -31,3 +31,7 @@ mcat
 mcat
 mcat
 mcat /etc/passwd
+mcat history.txt /etc/passwd
+mcat history.txt /etc/passwd
+make
+mcat history.txt /etc/passwd
