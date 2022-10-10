@@ -1,6 +1,8 @@
+#include <stdio.h>
+
 #include "mhist.h"
 
-int main(int argc, char **argv)
+int main(void)
 {
     mhist();
     return 0;

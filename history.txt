@@ -1,8 +1,10 @@
-mls
-mcat
-mm
-qsdfsdf
 mhist
-mcat main.c
-mcat
-
+mpwd
+mpwd
+mcat history.txt
+mls
+mhist
+azeaze
+azeaze
+qsdqsd
+mhist

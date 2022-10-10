@@ -39,6 +39,23 @@ void parameter_detector(char *parameter)
 {
 }
 
+void add_to_history_file(char *to_add)
+{
+	FILE *history_file;
+	history_file = fopen("history.txt", "a+");
+
+	if (history_file == NULL)
+	{
+		printf("Le fichier ne peut pas être ouvert\n");
+		exit(1);
+	}
+	else
+	{
+		fputs(to_add, history_file);
+	}
+	fclose(history_file);
+}
+
 int mini_shell(void)
 {
 	system("./build/mpwd");
@@ -49,16 +66,12 @@ int mini_shell(void)
 		char *input_string = NULL;
 		ssize_t nread;
 		/* Prompteur */
-		printf("[mini-shell]-$: ");
+		printf("[mhist]-$: ");
 		/* Lecture */
 		nread = getline(&input_string, &n, stdin);
-		// add_to_history_file(input_string);
+		add_to_history_file(input_string);
 		char *first_word = strtok(input_string, " ");
-		printf("first_word: %s \n", first_word);
-
-		char *second_word = strtok(NULL, " ");
-
-		printf("second_word2: %s \n", second_word);
+		// char *second_word = strtok(NULL, " ");
 
 		char *command_detected = command_detector(first_word);
 		if (command_detected != 0)
@@ -66,10 +79,6 @@ int mini_shell(void)
 			// mcat
 			if (strcmp(command_detected, "mcat") == 0)
 			{
-				if (second_word != NULL)
-				{
-					printf("Veillez indiquer un fichier. \n");
-				}
 				system("./build/mcat");
 			}
 			// mcd
@@ -95,20 +104,12 @@ int mini_shell(void)
 			// mls
 			else if (strcmp(command_detected, "mls") == 0)
 			{
-				if (second_word == NULL)
-				{
-					second_word = "./";
-				}
 				system("./build/mls");
 			}
 			// mpwd
 
 			else if (strcmp(command_detected, "mpwd") == 0)
 			{
-				if (second_word != NULL)
-				{
-					printf("Argument inutile\n");
-				}
 				system("./build/mpwd");
 			}
 		}

@@ -27,20 +27,3 @@ void mhist(void)
         fclose(fp);
     }
 }
-
-void add_to_history_file(char *to_add)
-{
-    FILE *history_file;
-    history_file = fopen("history.txt", "a+");
-
-    if (history_file == NULL)
-    {
-        printf("Le fichier ne peut pas être ouvert\n");
-        exit(1);
-    }
-    else
-    {
-        fputs(to_add, history_file);
-    }
-    fclose(history_file);
-}
