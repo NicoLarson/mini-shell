@@ -35,3 +35,12 @@ mcat history.txt /etc/passwd
 mcat history.txt /etc/passwd
 make
 mcat history.txt /etc/passwd
+mls
+mls /
+msl /
+mls /
+[A
+mls
+mls /etc
+mls ./build
+mls /

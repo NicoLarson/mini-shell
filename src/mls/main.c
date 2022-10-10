@@ -4,12 +4,16 @@
 #include <string.h>
 #include <errno.h>
 
-int main()
+int main(int argc, char **argv)
 {
     DIR *d;
     struct dirent *rp;
     /* Nom répertoire */
     char *directory_name = "./";
+    if (argc == 2)
+    {
+        directory_name = argv[1];
+    }
     /* Ouverture du flux */
     d = opendir(directory_name);
     /* Test de bonne ouverture */
@@ -19,7 +23,6 @@ int main()
         return EXIT_FAILURE;
     }
     /* Lecture du contenu et affichage du nom de chaque fichier rencontré */
-    fprintf(stdout, "\nContenu du répertoire %s\n", directory_name);
     rp = readdir(d);
     while (rp != NULL)
     {

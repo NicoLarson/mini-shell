@@ -117,7 +117,16 @@ int mini_shell(void)
 			// mls
 			else if (strcmp(command_detected, "mls") == 0)
 			{
-				system("./build/mls");
+				char mls_command[] = "./build/mls ";
+				if (second_word != NULL)
+				{
+					strcat(mls_command, second_word);
+					system(mls_command);
+				}
+				else
+				{
+					system("./build/mls");
+				}
 			}
 			// mpwd
 
