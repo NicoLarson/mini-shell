@@ -4,14 +4,6 @@
 #include <string.h>
 #include <errno.h>
 
-// #include "commands/mcat.c"
-// #include "commands/mcd.c"
-// #include "commands/mfind.c"
-// #include "commands/mgrep.c"
-// #include "commands/mhist.c"
-// #include "commands/mls.c"
-// #include "commands/mpwd.c"
-
 #define NUM_OF_COMMAND 7
 
 char *my_commands[NUM_OF_COMMAND] = {"mls", "mpwd", "mcd", "mfind", "mcat", "mgrep", "mhist"};
@@ -58,7 +50,6 @@ void add_to_history_file(char *to_add)
 
 int mini_shell(void)
 {
-	system("./build/mpwd");
 	int exit = 0;
 	while (exit == 0)
 	{
@@ -66,12 +57,12 @@ int mini_shell(void)
 		char *input_string = NULL;
 		ssize_t nread;
 		/* Prompteur */
-		printf("[mhist]-$: ");
+		printf("[mini_shell]-$: ");
 		/* Lecture */
 		nread = getline(&input_string, &n, stdin);
 		add_to_history_file(input_string);
 		char *first_word = strtok(input_string, " ");
-		// char *second_word = strtok(NULL, " ");
+		char *second_word = strtok(NULL, " ");
 
 		char *command_detected = command_detector(first_word);
 		if (command_detected != 0)
@@ -79,7 +70,16 @@ int mini_shell(void)
 			// mcat
 			if (strcmp(command_detected, "mcat") == 0)
 			{
-				system("./build/mcat");
+				char mcat_command[] = "./build/mcat ";
+				if (second_word != NULL)
+				{
+					strcat(mcat_command, second_word);
+					system(mcat_command);
+				}
+				else
+				{
+					system("./build/mcat");
+				}
 			}
 			// mcd
 			else if (strcmp(command_detected, "mcd") == 0)

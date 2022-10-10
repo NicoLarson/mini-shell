@@ -10,7 +10,7 @@ void mcat(char *file_directory)
 {
 	char ch;
 	FILE *fp;
-	printf("\nfile_directory: %s\n", file_directory);
+	printf("\nfile_directory: %s\n\n", file_directory);
 	fp = fopen(file_directory, "r");
 	if (fp == NULL)
 	{
@@ -27,4 +27,5 @@ void mcat(char *file_directory)
 		}
 		fclose(fp);
 	}
+	printf("\n");
 }
