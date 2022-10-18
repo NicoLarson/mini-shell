@@ -2,9 +2,11 @@
 
 ## TODO
 
-- [ ] faire un make file qui compil les fichiers
-- [ ] chaque commande a un fichier main
-- [ ] chaque commande va être utiliser avec l'executable
+Le processus ne fonctionne mais ne prend pas dans le mini-shell.
+
+- [ ] mcd
+- [ ] mfind
+- [ ] mgrep
 
 ## Introduction
 
@@ -12,11 +14,7 @@ Ce programme est un mini-shell où il sera possible d'utiliser les commandes sui
 
 - [x] mls
 - [x] mpwd
-- [ ] mcd
-Le processus ne fonctionne mais ne prend pas dans le mini-shell.
-- [ ] mfind
 - [x] mcat
-- [ ] mgrep
 - [x] mhist
 
 ```
@@ -85,7 +83,8 @@ Fonctions opendir(3), readdir(3), closedir(3)
 
 #### mfind
 
-Fonction pour trouver un fichier ou dossier.
+Rechercher des fichiers dans une hiérarchie de répertoires.
+`find [chemin...] [expression]`
 
 Utiliser **regex**.
 

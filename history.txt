@@ -115,3 +115,10 @@ mls
 m
 mcd build
 mls
+mls
+mcd ..
+mcd ../
+mcd ../..
+mls
+mpwd
+exit
