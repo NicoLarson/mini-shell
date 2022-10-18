@@ -1,0 +1,167 @@
+    MESSAGES
+    CONNEXION
+    EXPLORER
+    AIDEZ-NOUS 
+
+En navigant sur notre site, vous acceptez notre politique concernant les cookies.
+Paramètres des cookies
+Accepter
+
+    Ordinateurs et l'électroniqueInformatique
+
+Comment changer de répertoire dans le mode de commande
+Télécharger l'article
+Coécrit par l'équipe de wikiHow
+
+Dans cet article: Ouvrir la console de commande de Windows
+Changer de répertoire
+Articles en relation
+
+Lorsque vous travaillez en ligne de commande sur votre ordinateur, vous avez souvent besoin de vous déplacer entre les répertoires pour y effectuer diverses opérations sur des fichiers ou pour y lancer un programme exécutable.
+Partie 1
+Ouvrir la console de commande de Windows
+
+    1
+    Ouvrez le menu de démarrage de Windows. Vous pouvez cliquer sur le logo de Windows qui se trouve en bas et à gauche de votre écran ou presser la touche ⊞ Win de votre clavier.
+        Sous Windows 8, positionnez le pointeur de votre souris dans le coin supérieur droit de l’écran et cliquez sur l’icône représentant une loupe dès qu’elle s’affichera.
+    2
+    Saisissez cmd dans la barre de recherches. Vous verrez s’afficher le lanceur de la console de commande en haut de la fenêtre de démarrage.
+    3
+    Faites un clic droit sur le lanceur de la console. Son icône représente un rectangle noir dans lequel s’inscrit une invite de commande. Cette action aura pour effet d’afficher un menu déroulant.
+    4
+    Cliquez sur l’option intitulée Exécuter en tant qu’administrateur. Vous la trouverez dans la partie supérieure du menu déroulant. Ceci aura pour effet d’ouvrir la console de commande avec les privilèges d’administration du système.
+        Lorsque vous y serez invité, confirmez votre choix en cliquant sur Oui.
+        Vous ne pourrez pas ouvrir la console de commande si l’ordinateur sur lequel vous travaillez est intégré au réseau d’un établissement public ou d’une entreprise dont l’accès est par essence limité à une utilisation en mode standard et si vous ne bénéficiez pas des privilèges d’administration.
+
+Partie 2
+Changer de répertoire
+
+    1
+    Saisissez cd. Prenez soin d’insérer une espace après le cd. Cette commande, qui est l’abréviation du terme anglais Change Directory, est la base de toute instruction de changement de répertoire.
+        Ne pressez pas maintenant la touche ↵ Enter de votre clavier.
+    2
+    Déterminez le chemin d’accès au répertoire vers lequel vous voulez aller. Le chemin d’accès à un répertoire n’est autre que l’itinéraire que vous devez emprunter pour vous y rendre. Si le répertoire vers lequel vous voulez aller s’appelle System32, et se trouve dans le dossier Windows du disque dur C: sur lequel vous travaillez, le chemin d’accès sera exprimé sous la forme C:\Windows\System32\.
+        Vous pourrez trouver le chemin d’accès à un fichier en ouvrant Mon ordinateur, puis en faisant un doubleclic sur l’icône du disque dur et en naviguant vers votre dossier de destination. Notez ensuite l’adresse textuelle complète de ce dossier que vous pourrez lire en haut de sa fenêtre ouverte.
+    3
+    Tapez le chemin d’accès au répertoire cible. Son adresse doit venir à la suite de la commande cd, mais encore une fois, prenez soin de placer une espace entre la commande et l’adresse du dossier cible.
+        Votre ligne de commande complète résultera en
+        cd \Windows\System32 si vous voulez aller vous positionner dans le dossier System32 ou bien en cd D: si vous voulez aller dans la racine du disque D:.
+        Vous serez initialement placé dans la racine du disque dur C: ou celle de l’unité où se trouve votre système d’exploitation. Vous n’aurez pas besoin d’insérer la lettre d’identification de ce disque dans la commande de changement de répertoire si le dossier cible se trouve dans cette même unité.
+    4
+    Pressez maintenant la touche Entrée de votre clavier. Vous verrez l’invite de votre console de commande se modifier et afficher dorénavant le chemin d’accès au dossier que vous aurez atteint.
+
+Conseils
+
+    Changer de répertoire trouve toute son utilité lorsqu’il s’agit de modifier le nom d’un fichier ou de l’effacer, s’il est placé dans un dossier différent de celui où vous vous trouvez.
+    Voici quelques arguments de commande de changement de répertoire auxquels vous pourrez être confronté :
+        cd D: ou cd F: pour aller dans le répertoire racine d’une autre unité de disque interne ou externe comme un disque flash ;
+        cd .. pour remonter vers le répertoire de niveau hiérarchique supérieur à celui où vous êtes situé, comme pour aller de C:\Windows\System32 vers C:\Windows ;
+        cd\ vous amènera directement à la racine du disque où vous vous situez, quel que soit le niveau hiérarchique du répertoire où vous êtes positionné ;
+        cd/d vous permettra de changer en même temps de disque et de répertoire. Si vous vous trouvez dans la racine du disque C:, taper cd/d D:\monrep vous placera dans le répertoire monrep qui se trouve dans le disque D:.
+
+Avertissements
+
+    Tenter d’exécuter une commande applicable à un fichier ou à un dossier en particulier provoquera des erreurs si vous l’exécutez directement depuis un autre répertoire sans changer de dossier.
+
+wikiHows en relation
+créer et supprimer des dossiers et fichiers sous Windows avec l'invite de commandes
+Comment
+créer et supprimer des dossiers et fichiers sous Windows avec l'invite de commandes
+faire une capture d'écran sur un ordinateur HP
+Comment
+faire une capture d'écran sur un ordinateur HP
+casser le mot de passe d'un BIOS
+Comment
+casser le mot de passe d'un BIOS
+convertir un nombre décimal en hexadécimal
+Comment
+convertir un nombre décimal en hexadécimal
+commenter en PHP
+Comment
+commenter en PHP
+convertir un nombre décimal au format binaire IEEE 754
+Comment
+convertir un nombre décimal au format binaire IEEE 754
+faire une capture d'écran sous macOS
+Comment
+faire une capture d'écran sous macOS
+installer un système d'exploitation sur un nouvel ordinateur
+Comment
+installer un système d'exploitation sur un nouvel ordinateur
+Comment
+deviner un mot de passe
+Comment
+accéder au BIOS
+Comment
+réinitialiser le BIOS de votre PC
+Comment
+ouvrir des ports
+Comment
+revenir en arrière avec l'invite de commandes
+Comment
+changer la couleur du texte en HTML
+À propos de ce wikiHow
+l'équipe de wikiHow
+Coécrit par:
+l'équipe de wikiHow
+Rédacteurs de wikiHow
+Cet article a été rédigé avec la collaboration de nos éditeurs(trices) et chercheurs(euses) qualifiés(es) pour garantir l'exactitude et l'exhaustivité du contenu.
+
+L'équipe de gestion du contenu de wikiHow examine soigneusement le travail de l'équipe éditoriale afin de s'assurer que chaque article est en conformité avec nos standards de haute qualité. Cet article a été consulté 214 108 fois.
+Catégories: Informatique
+Autres langues 
+English:Change Directories in Command Prompt
+Español:cambiar directorios en el Símbolo del sistema
+Português:Alterar Diretórios no Prompt de Comandos
+Italiano:Cambiare Directory dal Prompt dei Comandi
+Русский:перемещаться по каталогам посредством командной строки
+Deutsch:Ordner wechseln in der Eingabeaufforderung
+中文:在命令提示符中更改目录
+Nederlands:Van map veranderen in Opdrachtprompt
+Bahasa Indonesia:Mengubah Direktori di Baris Perintah
+Čeština:Jak změnit adresář v Příkazovém řádku
+한국어:명령 프롬프트에서 현재 폴더 위치 변경하는 법
+हिन्दी:कमांड प्रॉम्प्ट में डाइरेक्टरी बदलें
+Tiếng Việt:Thay đổi Thư mục trong Command Prompt
+ไทย:เปลี่ยน Directory ปลายทางในหน้าต่าง Command Prompt
+العربية:تغيير المسارات في موجه الأوامر
+日本語:コマンドプロンプトでディレクトリを変更する
+Türkçe:Komut İsteminde Nasıl Dizin Değiştirilir
+فارسی:در Command Prompt پوشه‌ی فعال را تغییر دهیم
+
+    Imprimer
+
+Cette page a été consultée 214 108 fois.
+Cet article vous a-t-il été utile ?
+Articles en relation
+Comment
+créer et supprimer des dossiers et fichiers sous Windows avec l'invite de commandes
+Comment
+faire une capture d'écran sur un ordinateur HP
+Comment
+casser le mot de passe d'un BIOS
+Comment
+convertir un nombre décimal en hexadécimal
+Abonnez-vous à la newsletter gratuite de wikiHow !
+
+Des tutoriels utiles dans votre boitier de réception chaque semaine.
+Je m'abonne !
+Suivez-nous
+
+
+wikiHow
+
+    CatégoriesOrdinateurs et l'électroniqueInformatique 
+
+    Accueil
+    À propos de wikiHow
+    Expert(es)
+    Contactez nous
+    Plan du site
+    Termes et conditions
+    Politique de confidentialité
+
+Abonnez-vous pour recevoir la
+
+newsletter de wikiHow!
+S'abonner

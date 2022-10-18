@@ -1,0 +1,244 @@
+
+logo dvp
+
+    Forums
+    Tutoriels
+    FAQ
+    Blogs
+    Chat
+    Newsletter
+    Emploi
+    Études
+    Droit
+    Club
+
+    DI/DSI Solutions d'entreprise
+    Cloud
+    IA
+    ALM
+    Microsoft
+    Java
+    Dév. Web
+    EDI
+    Programmation
+    SGBD
+    Office
+    Mobiles
+    Systèmes
+
+    Programmation
+    Algorithmique
+    2D-3D-Jeux
+    Assembleur
+    C
+    C++
+    D
+    Go
+    Kotlin
+    Objective C
+    Pascal
+    Perl
+    Python
+    Rust
+    Swift
+    Qt
+    XML
+    Autres
+
+    Accueil C
+    Forums C
+    FAQ C
+    Tutoriels C
+    Livres C
+    Compilateurs et outils C
+    Sources C
+    Bibliothèques C
+    GTK+
+
+Navigation
+
+Inscrivez-vous gratuitement
+pour pouvoir participer, suivre les réponses en temps réel, voter pour les messages, poser vos propres questions et recevoir la newsletter
+
+    S'inscrire
+    Aide
+
+        Derniers messages
+        Actions
+        Réseau social
+        Blogs
+        Agenda
+        Chat (12)
+        Règles
+
+    Recherche avancée
+
+    Accueil
+    Forum
+    C et C++
+    C
+    changer de repertoire et situer
+
++ Répondre à la discussion
+C Discussion : changer de repertoire et situer
+Sujet : C
+
+    Outils de la discussion
+    Affichage
+
+    21/06/2002, 15h52 #1
+    chateau
+    chateau est déconnecté
+    Candidat au Club
+
+    [France] Profil pro
+    Inscrit en
+        mai 2002
+    Messages
+        4
+    [Plus de détails...]
+    Points
+        4
+
+    Par défaut changer de repertoire et situer
+
+        connaissez vous des fonctions qui permettent de changer de repertoire et aussi de faire l equivalent de pwd sous linux ?
+        merci d avvance 
+
+    Répondre avec citation Répondre avec citation   0  0
+    21/06/2002, 19h45 #2
+    dsimon
+    dsimon est déconnecté
+    Membre du Club
+
+    Inscrit en
+        mai 2002
+    Messages
+        22
+    [Plus de détails...]
+    Points
+        43
+
+    Par défaut
+
+        Pour changer de répertoire :
+
+        int chdir(const char *repertoire);
+
+        Pour le pwd (répertoire courant) :
+
+        char *getcwd(char *buf, taille_t taille); 
+
+    Répondre avec citation Répondre avec citation   0  0
+    24/06/2002, 09h56 #3
+    chateau
+    chateau est déconnecté
+    Candidat au Club
+
+    [France] Profil pro
+    Inscrit en
+        mai 2002
+    Messages
+        4
+    [Plus de détails...]
+    Points
+        4
+
+    Par défaut
+
+        le probleme c est que je suis sous visual c++ et il ne connait pas la librairie unistd.h. 
+
+    Répondre avec citation Répondre avec citation   0  0
+    24/06/2002, 10h01 #4
+    Miko
+    Miko est déconnecté
+    Nouveau membre du Club
+
+    Inscrit en
+        avril 2002
+    Messages
+        23
+    [Plus de détails...]
+    Points
+        35
+
+    Par défaut
+
+        - GetCurrentDirectory pour connaître le répertoire courant,
+        - SetCurrentDirectory pour changer le répertoire courant,
+        - GetSystemDirectory pour connaître le répertoire système de Windows (C:\Windows\System),
+        - GetWindowsDirectory pour connaître le répertoire d'installation de Windows (C:\Windows)
+
+        Pour devenir bon en C : Cours et tutoriels langage C : http://c.developpez.com/cours/ 
+
+    Répondre avec citation Répondre avec citation   0  0
+    24/06/2002, 11h27 #5
+    chateau
+    chateau est déconnecté
+    Candidat au Club
+
+    [France] Profil pro
+    Inscrit en
+        mai 2002
+    Messages
+        4
+    [Plus de détails...]
+    Points
+        4
+
+    Par défaut
+
+        parfait !
+        merci. 
+
+    Répondre avec citation Répondre avec citation   0  0
+
++ Répondre à la discussion
+Cette discussion est résolue.
+Actualités	FAQ C	Tutoriels C	Livres C	Compilateurs et outils C	Sources C		GTK+
+
+    Accueil
+    Forum
+    C et C++
+    C
+    changer de repertoire et situer
+
+« Discussion précédente | Discussion suivante »
+Linus Torvalds annonce que Rust for Linux est susceptible d'être prêt pour la version 5.20 du noyau
+C3 : un langage de programmation système basé sur le C, permet un accès sécurisé aux tableaux
+JetBrains dévoile la feuille de route de CLion 2022.3
+Les différentes façons de gérer les erreurs en C
+Discussions similaires
+
+    changer le repertoire d'installation d'une application
+    Par passion_info dans le forum Delphi
+    Réponses: 8
+    Dernier message: 18/10/2006, 09h40
+    changer le repertoire courant d'un fichier
+    Par Iria77 dans le forum Général Python
+    Réponses: 3
+    Dernier message: 27/09/2006, 11h17
+    Changer le repértoire home d'un utilisateur
+    Par julien.63 dans le forum Administration système
+    Réponses: 7
+    Dernier message: 26/06/2006, 21h42
+    Changer le repertoire de Documents and settings ?
+    Par Le Pharaon dans le forum Windows XP
+    Réponses: 2
+    Dernier message: 06/06/2006, 17h03
+    [Xp Sp2]Changer le repertoire de desinstallation
+    Par AdHoc dans le forum Windows XP
+    Réponses: 4
+    Dernier message: 16/05/2006, 16h34
+
+Partager
+
+    Envoyer la discussion sur Viadeo Envoyer la discussion sur Twitter Envoyer la discussion sur Google Envoyer la discussion sur Facebook Envoyer la discussion sur Digg Envoyer la discussion sur Delicious Envoyer la discussion sur MySpace Envoyer la discussion sur Yahoo 
+
+    Nous contacter Developpez.com Haut de page 
+
+Contacter le responsable de la rubrique C
+
+    Nous contacter Participez Hébergement Publicité / Advertising Informations légales Partenaire : Hébergement Web 
+
+© 2000-2022 - www.developpez.com

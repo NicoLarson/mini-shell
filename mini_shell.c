@@ -47,21 +47,24 @@ void add_to_history_file(char *to_add)
 	}
 	fclose(history_file);
 }
-void remove_char(char str[], char t)
+
+void run_command(char *command_name, char *arguments)
 {
-	int i, j;
-	i = 0;
-	while (i < strlen(str))
+	char command_to_run[] = "./build/";
+	strcat(command_to_run, command_name);
+	strcat(command_to_run, " ");
+
+	if (arguments != NULL)
 	{
-		if (str[i] == t)
-		{
-			for (j = i; j < strlen(str); j++)
-				str[j] = str[j + 1];
-		}
-		else
-			i++;
+		strcat(command_to_run, arguments);
+		system(command_to_run);
+	}
+	else
+	{
+		system("./build/mcat");
 	}
 }
+
 int mini_shell(void)
 {
 	int exit = 0;
@@ -97,7 +100,16 @@ int mini_shell(void)
 			// mcd
 			else if (strcmp(command_detected, "mcd") == 0)
 			{
-				system("./build/mcd");
+				char mcd_command[] = "./build/mcd ";
+				if (second_word != NULL)
+				{
+					strcat(mcd_command, second_word);
+					system(mcd_command);
+				}
+				else
+				{
+					system("./build/mcd");
+				}
 			}
 			// mfind
 			else if (strcmp(command_detected, "mfind") == 0)
@@ -107,7 +119,16 @@ int mini_shell(void)
 			// mgrep
 			else if (strcmp(command_detected, "mgrep") == 0)
 			{
-				system("./build/mgrep");
+				char mgrep_command[] = "./build/mgrep ";
+				if (second_word != NULL)
+				{
+					strcat(mgrep_command, second_word);
+					system(mgrep_command);
+				}
+				else
+				{
+					system("./build/mgrep");
+				}
 			}
 			// mhist
 			else if (strcmp(command_detected, "mhist") == 0)

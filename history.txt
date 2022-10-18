@@ -44,3 +44,74 @@ mls
 mls /etc
 mls ./build
 mls /
+mcd
+mcd /
+ls
+mls
+mcd
+mcd
+mcd /
+ls
+mls
+mpwd
+
+mcd build
+mls
+mcd
+mcd /
+ls
+mls
+mcd /
+mls
+mcd
+mcd buid
+mcd sd
+mcd build
+mcd /
+mls
+mls
+mcd build
+mls
+mcd /
+mls
+mcd build
+mls
+mpwd
+mcd /
+mcd /
+mcd build
+mcd ./build
+mls
+mcd /
+mcd build
+mcd
+mpwd
+mpwd
+cd
+mcd
+mcd /
+[A
+mcd build
+mcd ./build
+mcd /home
+mcd ~
+mcd /home/nicolas
+mcd
+mcd /
+mcd
+mcd /
+mcd /home
+mls
+mcat shell.c
+mls
+mcat minishel.c[D[D
+mcat mini_shell.c
+ls
+mls
+mhist
+mpwd
+mfind mcat.c
+mls
+m
+mcd build
+mls

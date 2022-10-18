@@ -13,6 +13,7 @@ Ce programme est un mini-shell où il sera possible d'utiliser les commandes sui
 - [x] mls
 - [x] mpwd
 - [ ] mcd
+Le processus ne fonctionne mais ne prend pas dans le mini-shell.
 - [ ] mfind
 - [x] mcat
 - [ ] mgrep
@@ -85,6 +86,19 @@ Fonctions opendir(3), readdir(3), closedir(3)
 #### mfind
 
 Fonction pour trouver un fichier ou dossier.
+
+Utiliser **regex**.
+
+il faut:
+
+1. Récupérer le mot à chercher entré par l'utilisateur.
+2. Parcourir tous les dossiers et sous dossier
+3. Comment parcourir les fichiers ?
+
+4. Si correspondance est détecté
+   1. afficher le chemin du fichier
+   2. Puis continuer la recherche
+5. Sinon continuer la recherche
 
 #### mgrep
 
