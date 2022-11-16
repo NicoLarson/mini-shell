@@ -142,3 +142,24 @@ mgrep main main.c
 mgrep main main.c
 mgrep main main.c
 mgrep 0 main.c
+mfind
+mpwd
+mls
+mls build
+mls build/mls
+ls
+mls
+mls build
+mls ./
+msl ./build/mls
+mls ./build/mls
+mcat main.c
+mcat main.c
+mls
+mcat main.c
+mcat src/mcat/main.c
+mcat main.c
+make
+mcat main.c
+mls
+mls src/mcat

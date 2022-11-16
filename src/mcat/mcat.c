@@ -19,6 +19,8 @@ void mcat(char *file_directory)
 	}
 	else
 	{
+
+		printf("---\n");
 		ch = fgetc(fp);
 		while (ch != EOF)
 		{
@@ -27,5 +29,6 @@ void mcat(char *file_directory)
 		}
 		fclose(fp);
 	}
-	printf("\n");
+
+	printf("\n---\n\n");
 }

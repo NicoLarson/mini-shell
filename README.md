@@ -1,14 +1,13 @@
 # Mini-shell
 
-## TODO
-
-- [ ] mcd: Le processus fonctionne mais ne prend pas dans le mini-shell.
-- [ ] mfind
-
 ## Introduction
 
 Ce programme est un mini-shell où il sera possible d'utiliser les commandes suivante:
 
+### TODO
+
+- [ ] mcd: Le processus fonctionne mais ne prend pas dans le mini-shell.
+- [ ] mfind
 - [x] mls
 - [x] mpwd
 - [x] mcat
@@ -59,7 +58,7 @@ char my_commands[] = {"mls", "mpwd", "mcd", "mfind", "mcat", "mgrep", "mhist"};
 
 ### COMMANDES et PARAMÈTRES
 
-Il faut tout d'abord savoir si une commende entré est:
+Il faut tout d'abord savoir si une commande entré est:
 
 - connue: Si une commande est dans la liste `my_commands`, elle est connue.
 - avec ou sans variable

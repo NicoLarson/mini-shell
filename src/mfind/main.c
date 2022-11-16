@@ -10,7 +10,7 @@ int main(int argc, char *argv[])
     printf("command : %s\n", argv[0]);
     printf("word_to_find : %s\n", word_to_find);
 
-    // parcourir le dossier
+    // TODO : parcourir le dossier
     DIR *d;
     struct dirent *rp;
     /* Nom répertoire */
