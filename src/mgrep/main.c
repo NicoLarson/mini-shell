@@ -34,7 +34,7 @@ int main(int argc, char **argv)
             // recherche de la chaîne de caractères dans la ligne
             if (strstr(line, argv[1]) != NULL)
             {
-                printf("%s:%d: %s", argv[i], line_number, line);
+                printf("%s: ligne %d:\n%s", argv[i], line_number, line);
             }
         }
 

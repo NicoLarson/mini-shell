@@ -138,3 +138,7 @@ mcd build
 mls
 mgrep 1 main.c
 mgrep main main.c
+[A[A
+mgrep main main.c
+mgrep main main.c
+mgrep 0 main.c

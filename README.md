@@ -2,11 +2,8 @@
 
 ## TODO
 
-Le processus ne fonctionne mais ne prend pas dans le mini-shell.
-
-- [ ] mcd
+- [ ] mcd: Le processus fonctionne mais ne prend pas dans le mini-shell.
 - [ ] mfind
-- [ ] mgrep
 
 ## Introduction
 
@@ -16,6 +13,7 @@ Ce programme est un mini-shell où il sera possible d'utiliser les commandes sui
 - [x] mpwd
 - [x] mcat
 - [x] mhist
+- [x] mgrep
 
 ```
                            ┌───────────┐
@@ -100,6 +98,17 @@ il faut:
 5. Sinon continuer la recherche
 
 #### mgrep
+
+Vérifier le nombre d'argument.
+Si le nombre d'argument est inférieur à 3, afficher un message d'erreur
+Sinon parcourir les fichiers en argument
+
+- Ouvrir le fichier
+  - Si problème d'ouverture afficher un message d'erreur
+  - Sinon parcourir les ligne
+  - Rechercher la chaîne de caractères dans la ligne
+  - Puis afficher la ligne
+- Fermer le fichier
 
 #### mhist
 
