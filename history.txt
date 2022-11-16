@@ -122,3 +122,19 @@ mcd ../..
 mls
 mpwd
 exit
+grep
+mgrep
+mgrep
+mgrep
+mls
+mgrep main mini_shell.c
+mgrep 'main' mini-shell.c
+
+cd ..
+mcd ..
+ls
+mls
+mcd build
+mls
+mgrep 1 main.c
+mgrep main main.c

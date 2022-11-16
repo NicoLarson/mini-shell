@@ -16,6 +16,11 @@ int main(int argc, char **argv)
             printf("chdir change of directory successful\n");
         }
     }
+
+    
     system("pwd");
+
+
+
     return chdir(argv[1]);
 }
