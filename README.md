@@ -1,5 +1,7 @@
 # Mini-shell
 
+// TODO: Mettre les chemin absolut pour tous le programme
+
 ## Introduction
 
 Ce programme est un mini-shell où il sera possible d'utiliser les commandes suivante:
@@ -77,6 +79,7 @@ Affiche le contenu d'un fichier.
 #### mcd
 
 // FIXME: la fonction chdir() fait changer de repertoire et les autres chemins des commandes changes.
+// TODO: Mettre les chemin absolut pour tous le programme
 
 Fonction mcd est dans le fichier mini-shell car histoire de processus ...
 

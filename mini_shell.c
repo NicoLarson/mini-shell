@@ -4,6 +4,7 @@
 #include <string.h>
 #include <errno.h>
 #include <unistd.h>
+#include <sys/wait.h>
 
 #define NUM_OF_COMMAND 7
 
@@ -69,7 +70,7 @@ void run_command(char *command_name, char *arguments)
 int mcd(char *directory)
 {
 	int ch = chdir(directory);
-	printf("%d",ch);
+	printf("%d", ch);
 	if (ch < 0)
 		printf("chdir change of directory not successful\n");
 	else
@@ -80,106 +81,76 @@ int mcd(char *directory)
 	return 0;
 }
 
+pid_t spawnChild(char *program, char **arg_list)
+{
+	pid_t ch_pid = fork();
+	if (ch_pid == -1)
+	{
+		perror("fork");
+		exit(EXIT_FAILURE);
+	}
+
+	if (ch_pid > 0)
+	{
+		printf("spawn child with pid - %d\n", ch_pid);
+		return ch_pid;
+	}
+	else
+	{
+		execvp(program, arg_list);
+		perror("execve");
+		exit(EXIT_FAILURE);
+	}
+}
+
 int mini_shell(void)
 {
-	int exit = 0;
-	while (exit == 0)
+	// malloc
+	char *leaving_prog_directory = "/mnt/c/Users/nyang2/OneDrive - Université de Guyane/Documents/COURS/SYSTEM/mini-shell/build/";
+	// strcat : copier la chaine
+	int exit_mini_shell = 0;
+	while (exit_mini_shell == 0)
 	{
 		size_t n = 0;
 		char *input_string = NULL;
 		ssize_t nread;
-		/* Prompteur */
-		printf("[mini_shell]-$: ");
-		/* Lecture */
+		printf("[MINI-SHELL]-$: ");
 		nread = getline(&input_string, &n, stdin);
-		add_to_history_file(input_string);
+		// Enregistrer dans une variable la commande
 		char *first_word = strtok(input_string, " ");
-		char *second_word = strtok(NULL, "\n");
-		char *command_detected = command_detector(first_word);
-		if (command_detected != 0)
-		{
-			// mcat
-			if (strcmp(command_detected, "mcat") == 0)
-			{
-				char mcat_command[] = "./build/mcat ";
-				if (second_word != NULL)
-				{
-					strcat(mcat_command, second_word);
-					system(mcat_command);
-				}
-				else
-				{
-					system("./build/mcat");
-				}
-			}
-			// mcd
-			else if (strcmp(command_detected, "mcd") == 0)
-			{
-				mcd(second_word);
-			}
-			// mfind
-			else if (strcmp(command_detected, "mfind") == 0)
-			{
-				system("./build/mfind");
-			}
-			// mgrep
-			else if (strcmp(command_detected, "mgrep") == 0)
-			{
-				char mgrep_command[] = "./build/mgrep ";
-				if (second_word != NULL)
-				{
-					strcat(mgrep_command, second_word);
-					system(mgrep_command);
-				}
-				else
-				{
-					system("./build/mgrep");
-				}
-			}
-			// mhist
-			else if (strcmp(command_detected, "mhist") == 0)
-			{
-				system("./build/mhist");
-			}
-			// mls
-			else if (strcmp(command_detected, "mls") == 0)
-			{
-				char mls_command[] = "./build/mls ";
-				if (second_word != NULL)
-				{
-					strcat(mls_command, second_word);
-					system(mls_command);
-				}
-				else
-				{
-					system("./build/mls");
-				}
-			}
-			// mpwd
+		printf("%s", strcat(prog_directory, first_word));
+		// Enregistrer dans un tableau dynamique les arguments
+		// Créer un processus fils et executer les programmes
+		char *args[] = {first_word, NULL};
+		pid_t child;
+		int wstatus;
+		child = spawnChild("aze", args);
 
-			else if (strcmp(command_detected, "mpwd") == 0)
-			{
-				system("./build/mpwd");
-			}
-		}
-		else
+		if (waitpid(child, &wstatus, WUNTRACED | WCONTINUED) == -1)
 		{
-			printf("Commande inconnue \n");
+			perror("waitpid");
+			exit(EXIT_FAILURE);
 		}
 
-		/* Verification */
 		if (nread == -1)
 		{
+			printf("nread == -1 ");
+
 			perror("getline");
 			return EXIT_FAILURE;
 		}
 
 		if (strcmp(input_string, "exit") == 10)
 		{
-			exit = 1;
+			exit_mini_shell = 1;
 		}
 		/* Libérer la mémoire */
+		printf("free input string");
+		perror("execvp");
+
 		free(input_string);
 	}
+	printf("EXIT");
+
 	return EXIT_SUCCESS;
 }

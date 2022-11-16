@@ -1,7 +1,14 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <sys/types.h>
+#include <sys/wait.h>
+#include <string.h>
 #include "mini_shell.h"
-int main()
-// 
+
+int main(void)
+
 {
     mini_shell();
-    return 0;
+    return EXIT_SUCCESS;
 }
