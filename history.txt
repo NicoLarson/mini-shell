@@ -181,3 +181,5 @@ mcd
 mcd
 mcd ..
 mcd build
+mls
+mcat ./
