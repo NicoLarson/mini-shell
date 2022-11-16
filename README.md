@@ -6,12 +6,12 @@ Ce programme est un mini-shell où il sera possible d'utiliser les commandes sui
 
 ### TODO
 
-- [ ] mcd: Le processus fonctionne mais ne prend pas dans le mini-shell.
+- [ ] mcd:
 - [ ] mfind
 - [x] mls
 - [x] mpwd
 - [x] mcat
-- [x] mhist
+- [x] mhist Ajouter option
 - [x] mgrep
 
 ```
@@ -76,7 +76,9 @@ Affiche le contenu d'un fichier.
 
 #### mcd
 
-Fonctions opendir(3), readdir(3), closedir(3)
+// FIXME: la fonction chdir() fait changer de repertoire et les autres chemins des commandes changes.
+
+Fonction mcd est dans le fichier mini-shell car histoire de processus ...
 
 #### mfind
 
@@ -111,6 +113,7 @@ Sinon parcourir les fichiers en argument
 
 #### mhist
 
+// TODO: Ajouter une option
 Ajouter un tableau malloc pour insérer chaque commandes entré par l'utilisateur.
 Ou créer un fichier contenant tous les historiques de commandes.
 

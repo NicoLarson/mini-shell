@@ -163,3 +163,21 @@ make
 mcat main.c
 mls
 mls src/mcat
+mcat build
+mcd build
+mhist
+mgrep return main.c
+mgrep # main.c mini_shell.h
+mgrep # main.c README.md
+mgrep char README.md main.c
+mgrep mini README.md main.c
+mgrep return mini_shell.c
+mfind
+mls
+mls build
+mls /home
+mpwd
+mcd
+mcd
+mcd ..
+mcd build

@@ -3,7 +3,6 @@
 #include <dirent.h>
 #include <string.h>
 #include <errno.h>
-#include <unistd.h>
 
 #define NUM_OF_COMMAND 7
 
@@ -66,20 +65,6 @@ void run_command(char *command_name, char *arguments)
 	}
 }
 
-int mcd(char *directory)
-{
-	int ch = chdir(directory);
-	printf("%d",ch);
-	if (ch < 0)
-		printf("chdir change of directory not successful\n");
-	else
-	{
-		printf("chdir change of directory successful\n");
-	}
-	system("pwd");
-	return 0;
-}
-
 int mini_shell(void)
 {
 	int exit = 0;
@@ -115,7 +100,16 @@ int mini_shell(void)
 			// mcd
 			else if (strcmp(command_detected, "mcd") == 0)
 			{
-				mcd(second_word);
+				char mcd_command[] = "./build/mcd ";
+				if (second_word != NULL)
+				{
+					strcat(mcd_command, second_word);
+					system(mcd_command);
+				}
+				else
+				{
+					system("./build/mcd");
+				}
 			}
 			// mfind
 			else if (strcmp(command_detected, "mfind") == 0)
