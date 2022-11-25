@@ -9,7 +9,7 @@
 void add_to_history_file(char *to_add)
 {
 	FILE *history_file;
-	history_file = fopen("history.txt", "a+");
+	history_file = fopen("/mnt/c/Users/nyang2/OneDrive - Université de Guyane/Documents/COURS/SYSTEM/mini-shell/history.txt", "a+");
 
 	if (history_file == NULL)
 	{
@@ -19,6 +19,7 @@ void add_to_history_file(char *to_add)
 	else
 	{
 		fputs(to_add, history_file);
+		fputs("\n", history_file);
 	}
 	fclose(history_file);
 }
@@ -26,13 +27,9 @@ void add_to_history_file(char *to_add)
 int mcd(char *directory)
 {
 	int ch = chdir(directory);
-	printf("%d", ch);
 	if (ch < 0)
 		printf("chdir change of directory not successful\n");
-	else
-	{
-		printf("chdir change of directory successful\n");
-	}
+
 	system("pwd");
 	return 0;
 }
@@ -74,6 +71,7 @@ int mini_shell(void)
 		}
 		else
 		{
+			add_to_history_file(arg_list[0]);
 			char *command_build = concatenate(leaving_prog_directory, arg_list[0]);
 			char *command = strtok(command_build, "\n");
 			pid_t child_pid;

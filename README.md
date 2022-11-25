@@ -9,11 +9,11 @@ Ce programme est un mini-shell où il sera possible d'utiliser les commandes sui
 ### TODO
 
 - [ ] mfind
-- [x] mcd:
+- [x] mcd dans le fichier mini-shell.c
 - [x] mls
 - [x] mpwd
 - [x] mcat
-- [x] mhist Ajouter option
+- [x] mhist
 - [x] mgrep
 
 ```

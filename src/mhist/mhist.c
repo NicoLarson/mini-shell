@@ -8,22 +8,23 @@
 
 void mhist(void)
 {
+    printf("--- HISTORY ---\n");
     char ch;
     FILE *fp;
-    fp = fopen("history.txt", "r");
-    if (fp == NULL)
+    fp = fopen("/mnt/c/Users/nyang2/OneDrive - Université de Guyane/Documents/COURS/SYSTEM/mini-shell/history.txt", "r");
+    // if (fp == NULL)
+    // {
+    //     int errnum = errno;
+    //     fprintf(stderr, "fp == NULL. %s \n", strerror(errnum));
+    // }
+    // else
+    // {
+    ch = fgetc(fp);
+    while (ch != EOF)
     {
-        int errnum = errno;
-        fprintf(stderr, "fp == NULL. %s \n", strerror(errnum));
-    }
-    else
-    {
+        printf("%c", ch);
         ch = fgetc(fp);
-        while (ch != EOF)
-        {
-            printf("%c", ch);
-            ch = fgetc(fp);
-        }
-        fclose(fp);
     }
+    fclose(fp);
+    // }
 }
