@@ -46,9 +46,9 @@ char *concatenate(char *s1, char *s2)
 }
 int mini_shell(void)
 {
-	char *leaving_prog_directory = "./build/";
-	char **arg_list = malloc(100 * sizeof(char *));
-	char *input = malloc(100 * sizeof(char));
+	char *leaving_prog_directory = "/mnt/c/Users/nyang2/OneDrive - Université de Guyane/Documents/COURS/SYSTEM/mini-shell/build/";
+	char **arg_list = calloc(100, sizeof(char *));
+	char *input = calloc(100, sizeof(char));
 
 	int exit_mini_shell = 0;
 	while (exit_mini_shell == 0)
@@ -64,6 +64,8 @@ int mini_shell(void)
 			token = strtok(NULL, " ");
 			i++;
 		}
+		arg_list[i - 1] = strtok(arg_list[i - 1], "\n");
+
 		arg_list[i] = NULL;
 		// if input is exit, exit the program
 		if (strcmp(arg_list[0], "exit") == 0)
@@ -83,12 +85,18 @@ int mini_shell(void)
 			}
 			else
 			{
-				execvp(command, arg_list);
+				if (strcmp(arg_list[0], "mcd") == 0)
+				{
+					mcd(arg_list[1]);
+				}
+				else
+				{
+					execvp(command, arg_list);
+				}
 			}
 		}
 	}
 	free(arg_list);
 	free(input);
-	printf("EXIT");
 	return EXIT_SUCCESS;
 }

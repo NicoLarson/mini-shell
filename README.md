@@ -8,8 +8,8 @@ Ce programme est un mini-shell où il sera possible d'utiliser les commandes sui
 
 ### TODO
 
-- [ ] mcd:
 - [ ] mfind
+- [x] mcd:
 - [x] mls
 - [x] mpwd
 - [x] mcat
