@@ -49,8 +49,15 @@ Si la commande contient un paramètre, une fonction devra detecter la commande p
 ## Étapes
 
 1. Créations des fichiers
-2. Codage des fonctions
-3. Test
+2. Organisation du projet
+   1. Arboraissance
+
+mini-shell
+  build: Contient toutes les commandes compilés
+  src: Contient les fichiers pour la création des commandes
+
+1. Codage des commandes séparément
+2. Test
 
 ### Les variables
 
@@ -140,3 +147,67 @@ localtime(3)
 
 Affichage du répertoire courant.
 Utilisation de la fonction `getcwd(2)`.
+
+---
+
+Le rapport fera une douzaine de pages maximum.
+Le rapport devra être clair et bien présenté.
+Il ne devra pas contenir de captures de (portions de) codes.
+Les images insérées, s'il y en a, devront avoir une taille raisonnable et être choisies de manière
+qualitative.
+Le rapport devra comprendre :
+l'organisation globale du projet,
+la description et l'explication des choix méthodologiques,
+le descriptif de la méthode d'utilisation des codes,
+les réalisations et
+les manquements,
+l'organisation des tâches, etc.
+
+---
+
+## Introduction
+
+Vous implémenterez un mini-shell où il sera possible d'utiliser les commandes suivantes
+:
+
+## Fonctionnalités
+
+mls : achage du contenu du répertoire courant ou du répertoire donné en argument
+• mpwd : achage du répertoire courant
+• mcd : changement de répertoire
+• mfind : recherche d'un chier par nom dans un répertoire donné en paramètre avec
+la possibilité d'utiliser une option pour rechercher uniquement des chiers standard
+ou des répertoires
+• mcat : achage du contenu d'un ou plusieurs chiers donnés en argument
+• mgrep : achage des lignes de chiers donnés en argument contenant une chaîne de
+caractères aussi donnée en argument
+• mhist : achage de l'historique des commandes exécutées avec une option pour la
+supprimer
+
+## Installer
+
+### Conditions préalables
+
+make
+gcc
+
+### Comment utiliser
+
+#### Amorcer
+
+#### Commandes
+
+     Mise à jour
+     Contributions
+     Remerciements
+     Des articles
+     Contributeurs
+
+## Mise a jour
+
+Le mini-shell implémentera aussi les redirections > et |.
+Les signaux de terminaison qu'il est possible de ne pas capturer le seront. Choisissez
+et donnez la méthode de terminaison du mini-shell que vous choisirez ; cette terminaison
+devra se faire proprement.
+La coloration syntaxique est un plus et ne devra être envisagée que si le projet est
+terminé.

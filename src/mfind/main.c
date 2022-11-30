@@ -7,18 +7,11 @@
 int main(int argc, char *argv[])
 {
     char *word_to_find = argv[2];
-    printf("command : %s\n", argv[0]);
-    printf("word_to_find : %s\n", word_to_find);
 
-    // TODO : parcourir le dossier
     DIR *d;
     struct dirent *rp;
     /* Nom répertoire */
-    char *directory_name = "./";
-    if (argc > 2)
-    {
-        directory_name = argv[1];
-    }
+    char *directory_name = argv[1];
 
     /* Ouverture du flux */
     d = opendir(directory_name);
@@ -29,18 +22,24 @@ int main(int argc, char *argv[])
         return EXIT_FAILURE;
     }
     /* Lecture du contenu et affichage du nom de chaque fichier rencontré */
+    // TODO : parcourir le dossier
     rp = readdir(d);
     while (rp != NULL)
     {
-        // fprintf(stdout, "%s\n", rp->d_name);
-        printf("%s\n", rp->d_name);
-        if (strcmp(rp->d_name, word_to_find) == 50)
+        if (strncmp(rp->d_name, word_to_find, 3) == 0)
         {
-            printf("File found : %s\n", rp->d_name);
+            if (rp->d_type == 4)
+            {
+                fprintf(stdout, "Find directory: \"%s\" in %s\n", rp->d_name, directory_name);
+            }
+            else
+            {
+                fprintf(stdout, "Find file: \"%s\" in %s\n", rp->d_name, directory_name);
+            }
         }
-
         rp = readdir(d);
     }
+
     /* Fermeture du flux */
     closedir(d);
     printf("\n");
