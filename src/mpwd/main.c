@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <unistd.h>
 
+// Affichage du répertoire courant
 int main(void)
 {
     char CWD[256];

@@ -41,9 +41,8 @@ Ce programme est un mini-shell où il sera possible d'utiliser les commandes sui
 ```
 
 Le mini-shell devra indiquer a l'utilisateur qu'il peut entrer une commande via le prompteur.
-Lorsque l'utilisateur entrera une commande, le programme devra detecter le type de commande.
-Si la commande est `exit`, le programme s'arrête.
-Si la commande est inconnue, le message `commande inconnue` s'affiche et retour au prompteur.
+Lorsque l'utilisateur entrera une commande avec ou sans argument, le programme détectera si la commande est connu.  
+Si l'utilisateur entre `exit`, le programme s'arrête.
 Si la commande contient un paramètre, une fonction devra detecter la commande puis le paramètre. Et ainsi traiter la commande.
 
 ## Étapes
@@ -206,8 +205,5 @@ gcc
 ## Mise a jour
 
 Le mini-shell implémentera aussi les redirections > et |.
-Les signaux de terminaison qu'il est possible de ne pas capturer le seront. Choisissez
-et donnez la méthode de terminaison du mini-shell que vous choisirez ; cette terminaison
-devra se faire proprement.
-La coloration syntaxique est un plus et ne devra être envisagée que si le projet est
-terminé.
+Les signaux de terminaison qu'il est possible de ne pas capturer le seront. Choisissez et donnez la méthode de terminaison du mini-shell que vous choisirez ; cette terminaison devra se faire proprement.
+La coloration syntaxique est un plus et ne devra être envisagée que si le projet est terminé.

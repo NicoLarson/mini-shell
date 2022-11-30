@@ -4,11 +4,12 @@
 #include <string.h>
 #include <errno.h>
 
+// Affichage du contenu du répertoire courant ou du répertoire donné en argument
 int main(int argc, char **argv)
 {
     DIR *d;
     struct dirent *rp;
-    /* Nom répertoire */
+    // Si aucun répertoire n'est donnée en argument, on utiliser le répertoire courant
     char *directory_name = "./";
     if (argc == 2)
     {
