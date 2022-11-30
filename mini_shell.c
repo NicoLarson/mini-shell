@@ -34,7 +34,7 @@ int mcd(char *directory)
 	return 0;
 }
 
-// Fonction qui concatène 2 chaînes de charactères
+// Fonction qui concatène 2 chaînes de caractères
 char *concatenate(char *s1, char *s2)
 {
 	char *result = malloc(strlen(s1) + strlen(s2));
@@ -61,7 +61,7 @@ int mini_shell(void)
 		// Copie la chaîne de caractère entré pour ajouter à l'historique
 		char *inputInHistory = calloc(100, sizeof(char));
 		strcpy(inputInHistory, input);
-
+		// On ajoute dans le tableau arg_list tous les entrées de l'utilisateur séparé par un espace
 		char *token = strtok(input, " ");
 		int i = 0;
 		while (token != NULL)
@@ -72,13 +72,16 @@ int mini_shell(void)
 		}
 		arg_list[i - 1] = strtok(arg_list[i - 1], "\n");
 		arg_list[i] = NULL;
+		// Si l'utilisateur écrit "exit", on quitte le mini-shell
 		if (strcmp(arg_list[0], "exit") == 0)
 		{
 			exit_mini_shell = 1;
 		}
+		// Sinon on ajoute l'entrée de l'utilisateur et on lance la commande avec les arguments
 		else
 		{
 			add_to_history_file(inputInHistory);
+			free(inputInHistory);
 			char *command_build = concatenate(leaving_prog_directory, arg_list[0]);
 			char *command = strtok(command_build, "\n");
 			pid_t child_pid;
