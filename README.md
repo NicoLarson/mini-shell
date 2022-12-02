@@ -1,209 +1,489 @@
+
 # Mini-shell
 
-// TODO: Mettre les chemin absolut pour tous le programme
+## Sommaire
 
-## Introduction
+- [Mini-shell](#mini-shell)
+  - [Sommaire](#sommaire)
+  - [1. Organisation du projet](#1-organisation-du-projet)
+    - [1.1. Prise de connaissance de l’énoncé](#11-prise-de-connaissance-de-lénoncé)
+    - [1.2. Outils de programmation](#12-outils-de-programmation)
+    - [1.3. Mise en place de l'architecture du projet](#13-mise-en-place-de-larchitecture-du-projet)
+      - [1.3.1 Arborescence du projet](#131-arborescence-du-projet)
+      - [1.3.2 Les dossiers](#132-les-dossiers)
+        - [1.3.2.1 Le dossier racine](#1321-le-dossier-racine)
+        - [1.3.2.2 `build`](#1322-build)
+        - [1.3.2.2 `src`](#1322-src)
+  - [2. Liste des fonctionnalités du mini shell](#2-liste-des-fonctionnalités-du-mini-shell)
+    - [2.1. Indiquer a l'utilisateur d'entrer une commande en passant par le prompteur](#21-indiquer-a-lutilisateur-dentrer-une-commande-en-passant-par-le-prompteur)
+    - [2.2. Enregistrer l'entrée de l'utilisateur](#22-enregistrer-lentrée-de-lutilisateur)
+    - [2.3. Après l'entrée de l'utilisateur, le mini-shell continue de fonctionner](#23-après-lentrée-de-lutilisateur-le-mini-shell-continue-de-fonctionner)
+    - [2.4. Le prompteur ne s’arrête que lorsque l'utilisateur entre `exit`](#24-le-prompteur-ne-sarrête-que-lorsque-lutilisateur-entre-exit)
+    - [2.5. Le mini-shell enregistre les entrées de l'utilisateur dans un fichier `historique.txt`](#25-le-mini-shell-enregistre-les-entrées-de-lutilisateur-dans-un-fichier-historiquetxt)
+    - [2.6. Le mini-shell distingue les commandes des arguments](#26-le-mini-shell-distingue-les-commandes-des-arguments)
+    - [2.7. Si une commande existe, le mini-shell cherche le chemin de la commande puis l'exécute](#27-si-une-commande-existe-le-mini-shell-cherche-le-chemin-de-la-commande-puis-lexécute)
+  - [3. Liste des fonctionnalités des commandes](#3-liste-des-fonctionnalités-des-commandes)
+    - [3.1. `mcat`](#31-mcat)
+      - [3.1.1 Réalisation](#311-réalisation)
+    - [3.2. `mfind`](#32-mfind)
+      - [3.2.1 Réalisation](#321-réalisation)
+    - [3.3. `mgrep`](#33-mgrep)
+      - [3.3.1 Réalisation](#331-réalisation)
+    - [3.4. `mhist`](#34-mhist)
+      - [3.4.1 Réalisation](#341-réalisation)
+    - [3.5. `mls`](#35-mls)
+      - [3.5.1 Réalisation](#351-réalisation)
+    - [3.6. `mpwd`](#36-mpwd)
+      - [3.6.1 Réalisation](#361-réalisation)
+    - [3.7. `mcd`](#37-mcd)
+      - [3.7.1 Réalisation](#371-réalisation)
+  - [4. Les manquements](#4-les-manquements)
+  - [5. Usage](#5-usage)
+  - [6. Author](#6-author)
+  - [Show your support](#show-your-support)
 
-Ce programme est un mini-shell où il sera possible d'utiliser les commandes suivante:
+## 1. Organisation du projet
 
-### TODO
+### 1.1. Prise de connaissance de l’énoncé
 
-- [ ] mfind
-- [x] mcd dans le fichier mini-shell.c
-- [x] mls
-- [x] mpwd
-- [x] mcat
-- [x] mhist
-- [x] mgrep
+Créer un programme `mini-shell` où il sera possible d'utiliser les commandes suivantes: `mfind`, `mcd`, `mls`, `mpwd`, `mcat`, `mhist` et `mgrep`.
 
+### 1.2. Outils de programmation
+
+- Éditeur de code: VSCODE
+- Environnement GNU/Linux: WSL
+- Compilateur: `gcc`
+- Outil de compilation: `make`
+
+### 1.3. Mise en place de l'architecture du projet
+
+#### 1.3.1 Arborescence du projet
+
+```bash
+├── build
+│   ├── mcat
+│   ├── mcd
+│   ├── mfind
+│   ├── mgrep
+│   ├── mhist
+│   ├── mls
+│   └── mpwd
+├── history.txt
+├── main.c
+├── makefile
+├── mini_shell
+├── mini_shell.c
+├── mini_shell.h
+└── src
+    ├── mcat
+    │   ├── main.c
+    │   └── makefile
+    ├── mfind
+    │   ├── main.c
+    │   └── makefile
+    ├── mgrep
+    │   ├── main.c
+    │   └── makefile
+    ├── mhist
+    │   ├── main.c
+    │   └── makefile
+    ├── mls
+    │   ├── main.c
+    │   └── makefile
+    └── mpwd
+        ├── main.c
+        └── makefile
 ```
-                           ┌───────────┐
-                           │ Programme │
-                           └─────┬─────┘
-                                 │
-                            ┌────▼───┐
- ┌──────────────────────────► Prompt ◄─────────────────────────────────┐
- │                          └────┬───┘                                 │
- │                               │                                     │
- │                       ┌───────▼──────┐                              │
- │          ┌────────────┤   Commande   ├─────────┬─────────────┐      │
- │          │            └───────┬──────┘         │             │      │
- │          │                    │                │             │      │
- │ ┌────────▼───────┐  ┌─────────▼────────┐  ┌────▼────┐  ┌─────▼────┐ │
- │ │ Sans paramètre │  │  Avec paramètre  │  │ Quitter │  │ Inconnue ├─┘
- │ └───────────┬────┘  └───────┬──────────┘  └─────────┘  └──────────┘
- │             │               │
- │             │               │
- │             │               │
- │        ┌────▼───────────────▼───┐
- └────────┤ Traitement / affichage │
-          └────────────────────────┘
+
+#### 1.3.2 Les dossiers
+
+##### 1.3.2.1 Le dossier racine
+
+Le dossier racine contient le fichier mini-shell.c qui contient le code du mini-shell qui permet d'exécuter les différentes commandes.
+
+##### 1.3.2.2 `build`
+
+Le dossier `build` contiens les exécutables des commandes
+
+##### 1.3.2.2 `src`
+
+Le dossier `src` contient le code des commandes ainsi que leur makefile.
+
+> Le code de la commande `mcd` se trouve directement dans le fichier mini_shell.c
+
+## 2. Liste des fonctionnalités du mini shell
+
+```asci
+
+                             ┌──────────┐
+                             │Mini-shell│
+                             └─────┬────┘
+                                   │
+                                   │
+                              ┌────▼────┐
+                 ┌────────────┤Prompteur◄──┬──────────────────────┐
+                 │            └─────────┘  │                      │
+                 │                         │                      │
+                 │                         │                      │
+      ┌──────────▼────────────┐   ┌────────┴────────┐ ┌───────────┴──────────┐
+      │Entrée de l'utilisateur│   │Commande inconnue│ │Execution du programme│
+      └────┬────────────────┬─┘   └────────▲────────┘ └───────────▲──────────┘
+           │                │              │                      │
+           │                │              │                      │
+           │          ┌─────▼─────┐        │                      │
+           │          │Traitements│        ├──────────────────────┘
+           │          └───────┬───┘        │
+           │                  │            │
+           │                  │            │
+┌──────────▼─────────┐     ┌──▼────────────┴───────────────┐
+│Quitter le programme│     │Enregistrement dans history.txt│
+└────────────────────┘     └───────────────────────────────┘
 ```
 
-Le mini-shell devra indiquer a l'utilisateur qu'il peut entrer une commande via le prompteur.
-Lorsque l'utilisateur entrera une commande avec ou sans argument, le programme détectera si la commande est connu.  
-Si l'utilisateur entre `exit`, le programme s'arrête.
-Si la commande contient un paramètre, une fonction devra detecter la commande puis le paramètre. Et ainsi traiter la commande.
-
-## Étapes
-
-1. Créations des fichiers
-2. Organisation du projet
-   1. Arboraissance
-
-mini-shell
-  build: Contient toutes les commandes compilés
-  src: Contient les fichiers pour la création des commandes
-
-1. Codage des commandes séparément
-2. Test
-
-### Les variables
+### 2.1. Indiquer a l'utilisateur d'entrer une commande en passant par le prompteur
 
 ```c
-char my_commands[] = {"mls", "mpwd", "mcd", "mfind", "mcat", "mgrep", "mhist"};
+printf("mini-shell> ");
 ```
 
-### COMMANDES et PARAMÈTRES
+### 2.2. Enregistrer l'entrée de l'utilisateur
 
-Il faut tout d'abord savoir si une commande entré est:
+```c
+fgets(input, 100, stdin);
+```
 
-- connue: Si une commande est dans la liste `my_commands`, elle est connue.
-- avec ou sans variable
+### 2.3. Après l'entrée de l'utilisateur, le mini-shell continue de fonctionner
 
-Faire une fonction `command_detector()` qui récupère l'entrée de l'utilisateur et trouve la commande.
-Une commande commencera toujours au début.
-Supprimer les espaces du début et prendre les premiers caractères jusqu’au prochain espace.
+```c
+int exit_mini_shell = 0;
+while (exit_mini_shell == 0){ /* CODE */ }
+```
 
-Faire une fonction `parameter_detector()` qui récupère l'entrée de l'utilisateur et trouve le paramètre de la commande.
-Un paramètre sera toujours après une commande.
+### 2.4. Le prompteur ne s’arrête que lorsque l'utilisateur entre `exit`
 
-#### mcat
+```c
+if (strcmp(arg_list[0], "exit") == 0)
+    exit_mini_shell = 1;
+```
+
+### 2.5. Le mini-shell enregistre les entrées de l'utilisateur dans un fichier `historique.txt`
+
+```c
+void add_to_history_file(char *to_add);
+```
+
+### 2.6. Le mini-shell distingue les commandes des arguments
+
+```c
+char **arg_list = calloc(100, sizeof(char *));
+char *input = calloc(100, sizeof(char));
+fgets(input, 100, stdin);
+char *token = strtok(input, " ");
+int i = 0;
+while (token != NULL){
+    arg_list[i] = token;
+    token = strtok(NULL, " ");
+    i++;
+}
+arg_list[i - 1] = strtok(arg_list[i - 1], "\n");
+arg_list[i] = NULL;
+// arg_list[0]: Commande
+// arg_list[n]: Arguments
+```
+
+### 2.7. Si une commande existe, le mini-shell cherche le chemin de la commande puis l'exécute
+
+La fonction `concatenate` est utilisé pour concaténer le chemin de la commande avec le nom de la commande.
+
+```c
+char *concatenate(char *s1, char *s2){
+    char *result = malloc(strlen(s1) + strlen(s2));
+    strcpy(result, s1);
+    strcat(result, s2);
+    return result;
+}
+```
+
+Ensuite, on exécute la commande avec la fonction `execvp`.
+
+```c
+int mini_shell(void){
+    char *leaving_prog_directory = "/mnt/c/Users/nyang2/OneDrive - Université de Guyane/Documents/COURS/SYSTEM/mini-shell/build/";
+    /* CODE */
+        char *command_build = concatenate(leaving_prog_directory, arg_list[0]);
+        char *command = strtok(command_build, "\n");
+    /* CODE */
+            execvp(command, arg_list);
+    /* CODE */
+}
+```
+
+## 3. Liste des fonctionnalités des commandes
+
+### 3.1. `mcat`
 
 Affiche le contenu d'un fichier.
 
-#### mcd
+#### 3.1.1 Réalisation
 
-// FIXME: la fonction chdir() fait changer de repertoire et les autres chemins des commandes changes.
-// TODO: Mettre les chemin absolut pour tous le programme
+La fonction `mcat` prend en paramètre une chaîne de caractères `file_directory`.
+On ouvre le fichier `file_directory`.
+Si on rencontre une erreur de lecture, on affiche une erreur.
+Sinon, tant que le fichier n'est pas terminé, on parcourt chaque caractère du fichier et on l'affiche.
 
-Fonction mcd est dans le fichier mini-shell car histoire de processus ...
+```c
+void mcat(char *file_directory){
+    char ch;
+    FILE *fp;
+    printf("\n---\nfile_directory: %s\n---\n", file_directory);
+    fp = fopen(file_directory, "r");
+    if (fp == NULL){
+        int errnum = errno;
+        fprintf(stderr, "%s \n", strerror(errnum));
+    }else{
+        ch = fgetc(fp);
+        while (ch != EOF){
+            printf("%c", ch);
+            ch = fgetc(fp);
+        }
+        fclose(fp);
+    }
+}
+```
 
-#### mfind
+### 3.2. `mfind`
 
-Rechercher des fichiers dans une hiérarchie de répertoires.
-`find [chemin...] [expression]`
+Rechercher des fichiers par nom dans un répertoire.
 
-Utiliser **regex**.
+#### 3.2.1 Réalisation
 
-il faut:
+Le premier argument est le répertoire dans lequel on recherche les fichiers `directory_name`.
+Le deuxième argument est le nom du fichier que l'on recherche `word_to_find`.
+On ouvre le répertoire `directory_name`.
+Si l’on rencontre une erreur d'ouverture, on affiche une erreur.
+Sinon, on parcourt chaque fichier du répertoire et on compare le nom du fichier avec `word_to_find`.
+Si le nom du fichier correspond à `word_to_find`, on affiche le chemin du fichier.
 
-1. Récupérer le mot à chercher entré par l'utilisateur.
-2. Parcourir tous les dossiers et sous dossier
-3. Comment parcourir les fichiers ?
+```c
+int main(int argc, char *argv[]){
+    char *word_to_find = argv[2];
+    DIR *d;
+    struct dirent *rp;
+    char *directory_name = argv[1];
+    d = opendir(directory_name);
+    if (d == NULL){
+        perror("opendir");
+        return EXIT_FAILURE;
+    }
+    rp = readdir(d);
+    while (rp != NULL){
+        if (strncmp(rp->d_name, word_to_find, 3) == 0){
+            if (rp->d_type == 4){
+                fprintf(stdout, "Find directory: \"%s\" in %s\n", rp->d_name, directory_name);
+            }else{
+                fprintf(stdout, "Find file: \"%s\" in %s\n", rp->d_name, directory_name);
+            }
+        }
+        rp = readdir(d);
+    }
+    closedir(d);
+    printf("\n");
+    return EXIT_SUCCESS;
+}
+```
 
-4. Si correspondance est détecté
-   1. afficher le chemin du fichier
-   2. Puis continuer la recherche
-5. Sinon continuer la recherche
+### 3.3. `mgrep`
 
-#### mgrep
+Afficher des lignes de fichiers donnés en argument contenant une chaîne de caractères aussi donnée en argument.
 
-Vérifier le nombre d'argument.
-Si le nombre d'argument est inférieur à 3, afficher un message d'erreur
-Sinon parcourir les fichiers en argument
+#### 3.3.1 Réalisation
 
-- Ouvrir le fichier
-  - Si problème d'ouverture afficher un message d'erreur
-  - Sinon parcourir les ligne
-  - Rechercher la chaîne de caractères dans la ligne
-  - Puis afficher la ligne
-- Fermer le fichier
+On vérifie le nombre d'arguments.
+Si le nombre d'arguments est inférieur à 3, indique la façon d'utiliser la commande puis on quitte la fonction.
+Sinon, on parcourt chaque fichier et on affiche les lignes qui contiennent la chaîne de caractères.
+Si l’on rencontre une erreur d'ouverture, on affiche une erreur.
 
-#### mhist
+```c
+int main(int argc, char **argv){
+    if (argc < 3){
+        printf("Utilisation: %s string fichier& [fichier2 ...]\n", argv[0]);
+        return 1;
+    }
+    for (int i = 2; i < argc; i++){
+        FILE *file = fopen(argv[i], "r");
+        if (file == NULL){
+            printf("Erreur: ouverture du fichier %s\n", argv[i]);
+            continue;
+        }
+        char *line = NULL;
+        size_t size = 0;
+        int line_number = 0;
+        while (getline(&line, &size, file) != -1){
+            line_number++;
+            if (strstr(line, argv[1]) != NULL){
+                printf("%s: ligne %d:\n%s", argv[i], line_number, line);
+            }
+        }
+        fclose(file);
+    }
+    return 0;
+}
+```
 
-// TODO: Ajouter une option
-Ajouter un tableau malloc pour insérer chaque commandes entré par l'utilisateur.
-Ou créer un fichier contenant tous les historiques de commandes.
+### 3.4. `mhist`
 
 Affichage de l'historique des commandes exécutées avec une option pour la supprimer.
 
-#### Fonctions
+#### 3.4.1 Réalisation
 
-- Enregistrer les commandes
-- Afficher les commandes
+On créer une fonction qui va lire le fichier `historique.txt` et l'afficher.
 
-chdir(2)
-getcwd(2)
-localtime(3)
+```c
+void mhist(void){
+    char ch;
+    FILE *fp;
+    fp = fopen("./mini-shell/history.txt", "r");
+    ch = fgetc(fp);
+    while (ch != EOF){
+        printf("%c", ch);
+        ch = fgetc(fp);
+    }
+    fclose(fp);
+}
+```
 
-#### mls
+On créer une fonction qui supprime le fichier `history.txt`
 
-- [x] Afficher le contenu du répertoire courant
-- [ ] Afficher répertoire donné en argument.
+```c
+void clean_history(void){
+    remove("./mini-shell/history.txt");
+}
+```
 
-#### mpwd
+Puis, une fonction qui va vérifier si l'utilisateur a entré l'option pour supprimer l'historique.
+
+```c
+#define OPTIONS "c"
+
+void mhist(void){/* CODE */}
+void clean_history(void){/* CODE */}
+
+int main(int argc, char **argv){
+    opterr = 0;
+    char option = 0;
+    while (option != -1){
+        option = getopt(argc, argv, OPTIONS);
+        switch (option){
+        case 'c':
+            clean_history();
+            break;
+        case '?':
+            fprintf(stdout, "Option %c inconnue\n", optopt);
+            break;
+        }
+    }
+    mhist();
+    return EXIT_SUCCESS;
+}
+```
+
+### 3.5. `mls`
+
+Affichage du contenu du répertoire courant ou du répertoire donné en argument.
+
+#### 3.5.1 Réalisation
+
+Si aucun répertoire n'est donné en argument, le répertoire courant est utilisé.
+Sinon, on ouvre le répertoire donné en argument.
+Si l'on rencontre une erreur d'ouverture, on affiche une erreur.
+Sinon, on parcourt chaque fichier du répertoire puis on affiche le nom du fichier.
+
+```c
+int main(int argc, char **argv){
+    DIR *d;
+    struct dirent *rp;
+    char *directory_name = "./";
+    if (argc == 2)    {
+        directory_name = argv[1];
+    }
+    d = opendir(directory_name);
+    if (d == NULL){
+        perror("opendir");
+        return EXIT_FAILURE;
+    }
+    rp = readdir(d);
+    while (rp != NULL){
+        fprintf(stdout, "%s\n", rp->d_name);
+        rp = readdir(d);
+    }
+    closedir(d);
+    printf("\n");
+    return EXIT_SUCCESS;
+}
+```
+
+### 3.6. `mpwd`
 
 Affichage du répertoire courant.
-Utilisation de la fonction `getcwd(2)`.
 
----
+#### 3.6.1 Réalisation
 
-Le rapport fera une douzaine de pages maximum.
-Le rapport devra être clair et bien présenté.
-Il ne devra pas contenir de captures de (portions de) codes.
-Les images insérées, s'il y en a, devront avoir une taille raisonnable et être choisies de manière
-qualitative.
-Le rapport devra comprendre :
-l'organisation globale du projet,
-la description et l'explication des choix méthodologiques,
-le descriptif de la méthode d'utilisation des codes,
-les réalisations et
-les manquements,
-l'organisation des tâches, etc.
+On utilise la fonction `getcwd` pour récupérer le répertoire courant.
+Si l'on rencontre une erreur, on affiche une erreur.
+Sinon, on affiche le répertoire courant.
 
----
+```c
+int main(void){
+    char CWD[256];
+    if (getcwd(CWD, sizeof(CWD)) == NULL)
+        perror("getcwd(): error\n");
+    else
+        printf("%s\n", CWD);
+    return 0;
+}
+```
 
-## Introduction
+### 3.7. `mcd`
 
-Vous implémenterez un mini-shell où il sera possible d'utiliser les commandes suivantes
-:
+Changer le répertoire courant.
 
-## Fonctionnalités
+#### 3.7.1 Réalisation
 
-mls : achage du contenu du répertoire courant ou du répertoire donné en argument
-• mpwd : achage du répertoire courant
-• mcd : changement de répertoire
-• mfind : recherche d'un chier par nom dans un répertoire donné en paramètre avec
-la possibilité d'utiliser une option pour rechercher uniquement des chiers standard
-ou des répertoires
-• mcat : achage du contenu d'un ou plusieurs chiers donnés en argument
-• mgrep : achage des lignes de chiers donnés en argument contenant une chaîne de
-caractères aussi donnée en argument
-• mhist : achage de l'historique des commandes exécutées avec une option pour la
-supprimer
+La commande `mcd` est codée dans le fichier `mini-shell.c` pour éviter de quitter le flux de l'application.
+Elle prend en argument le répertoire dans lequel on veut se déplacer.
+On utilise la fonction `chdir` pour changer le répertoire courant.
 
-## Installer
+```c
+int mcd(char *directory){
+    int ch = chdir(directory);
+    if (ch < 0)
+        printf("chdir change of directory not successful\n");
+    system("pwd");
+    return 0;
+}
+```
 
-### Conditions préalables
+## 4. Les manquements
 
+- Implementation des redirection `>` et `|`
+- Les signaux de terminaison
+- La coloration syntaxique
+
+## 5. Usage
+
+```bash
 make
-gcc
+make run
+```
 
-### Comment utiliser
+## 6. Author
 
-#### Amorcer
+👤 **Nicolas Yang**
 
-#### Commandes
+- Website: [nicolasyang.dev](https://nicolasyang.dev)
+- Github: [@NicoLarson](https://github.com/NicoLarson)
+- LinkedIn: [@nicolas-yang-dev](https://linkedin.com/in/nicolas-yang-dev)
 
-     Mise à jour
-     Contributions
-     Remerciements
-     Des articles
-     Contributeurs
+## Show your support
 
-## Mise a jour
-
-Le mini-shell implémentera aussi les redirections > et |.
-Les signaux de terminaison qu'il est possible de ne pas capturer le seront. Choisissez et donnez la méthode de terminaison du mini-shell que vous choisirez ; cette terminaison devra se faire proprement.
-La coloration syntaxique est un plus et ne devra être envisagée que si le projet est terminé.
+Give a ⭐️ if this project helped you!

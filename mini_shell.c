@@ -53,6 +53,7 @@ int mini_shell(void)
 	char **arg_list = calloc(100, sizeof(char *));
 	char *input = calloc(100, sizeof(char));
 	int exit_mini_shell = 0;
+	// Le prompteur ne s’arrête que lorsque l'utilisateur tape exit ou quitte le programme (Ctrl + C)
 	while (exit_mini_shell == 0)
 	{
 		printf("mini-shell> ");
